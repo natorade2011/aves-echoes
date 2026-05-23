@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "blue-heron",
+    "category": "raptors",
+    "tag": "Fish Stalkers",
+    "title": "Blue Heron",
+    "excerpt": "The Art of the Hunt",
+    "date": "May 22, 2026",
+    "author": "Nathan Schess",
+    "authorAvatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100",
+    "readingTime": "4",
+    "image": "images/blue-heron.jpeg",
+    "speciesFacts": {
+      "scientific": "Ardea herodias",
+      "habitat": "Wetlands, coastal shores, tidal flats, a",
+      "wingspan": "167 – 201cm",
+      "status": "Stable"
+    },
+    "content": "Field Notes: The Patient Hunter of Oyhut Bay\nThere is a distinct magic to watching a Great Blue Heron (Ardea herodias) on a quiet morning. During a recent excursion to Oyhut Bay on May 9th, I was lucky enough to catch this beautiful juvenile or non-breeding adult wading through the shallows, completely locked into its morning routine.\nIf you’ve ever tried to photograph these birds, you know it’s a lesson in absolute stillness.\nThe Art of the Hunt\nWhat struck me most about this specific encounter was the heron's deliberate posture. Moving with a slow, calculated gait, it kept its weight perfectly balanced over its long, yellow-toned legs. Its sharp, dagger-like bill was angled downward, scanning the murky, weed-covered water for any sign of movement—likely small fish, frogs, or crabs.\nUnlike the bright, ornate plumage seen during the peak breeding season, this individual sported a clean, slate-grey and deep blue coat, with the characteristic white and black streaking along its crown and throat beautifully defined against the soft, green reflections of the water.\nWhy Oyhut Bay Delivers\nOyhut Bay offers the perfect backdrop for these master fishers. The calm, shallow waters and abundant cover provide a rich hunting ground. Watching this heron move was a masterclass in patience; it would freeze mid-stride, blending seamlessly into the environment, before delivering a lightning-fast strike.\nCapturing this shot required a bit of that heron-like patience, waiting for the bird to step into a pocket of clean light that highlighted the intricate texture of its feathers.\nHave you spotted any herons in your local wetlands lately? What’s your favorite behavior to watch for? Let me know in the comments below!"
+  }
+]
