@@ -338,6 +338,19 @@ document.addEventListener('DOMContentLoaded', () => {
       ? BLOG_POSTS 
       : BLOG_POSTS.filter(post => post.category === filter);
 
+    if (filteredPosts.length === 0) {
+      blogGrid.innerHTML = `
+        <div class="empty-state-card glass-panel" style="grid-column: 1 / -1; max-width: 500px; margin: 3rem auto; text-align: center; padding: 3rem 2rem;">
+          <div class="empty-img-wrapper" style="border-color: rgba(var(--accent-rgb), 0.2); width: 140px; height: 140px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 3px double var(--accent);">
+            <img class="empty-img" src="images/sightings_placeholder.png" alt="No chronicles written yet" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent); margin-bottom: 0.75rem;">Chronicles Awaiting Inspiration</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 380px; margin: 0 auto;">The field journal is currently quiet. Run your website locally and use the Owner Portal in the footer to publish your first descriptive chronicle!</p>
+        </div>
+      `;
+      return;
+    }
+
     filteredPosts.forEach(post => {
       const card = document.createElement('article');
       card.className = 'blog-card glass-panel';
