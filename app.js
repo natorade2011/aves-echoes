@@ -4,6 +4,15 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Global Environment Safeguard: Detect immediately if loaded on a live public domain
+  const isLocal = window.location.hostname === 'localhost' || 
+                  window.location.hostname === '127.0.0.1' || 
+                  window.location.hostname === '[::1]' || 
+                  window.location.protocol === 'file:';
+  if (!isLocal) {
+    document.body.classList.add('production-mode');
+  }
+
   /* --------------------------------------------------------------------------
      1. Mock Databases (Pre-baked Premium Blog Posts & Field Guide)
      -------------------------------------------------------------------------- */
@@ -910,20 +919,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCancelCms = document.getElementById('btn-cancel-cms');
   const cmsForm = document.getElementById('cms-form');
 
-  // Production Guard: Automatically show the Owner Portal link ONLY if running locally
-  const isLocal = window.location.hostname === 'localhost' || 
-                  window.location.hostname === '127.0.0.1' || 
-                  window.location.hostname === '[::1]' || 
-                  window.location.protocol === 'file:';
-  if (isLocal) {
-    if (adminCmsLink) {
-      adminCmsLink.style.display = 'inline-block';
-    }
-  } else {
-    document.body.classList.add('production-mode');
-    if (adminCmsLink) {
-      adminCmsLink.style.display = 'none';
-    }
+  // Production Guard: Show the Owner Portal footer link only if we are in local development
+  if (isLocal && adminCmsLink) {
+    adminCmsLink.style.display = 'inline-block';
   }
   
   const cmsTabEditor = document.getElementById('cms-tab-editor');
