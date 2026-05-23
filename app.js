@@ -1056,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const category = document.getElementById('cms-category').value;
     const readingTime = document.getElementById('cms-reading-time').value.trim();
     const author = document.getElementById('cms-author').value.trim();
-    const authorAvatar = document.getElementById('cms-author-avatar').value.trim() || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100';
+    const authorAvatar = document.getElementById('cms-author-avatar').value.trim() || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a3b18a'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M12 14c-6.1 0-8 4-8 4v2h16v-2s-1.9-4-8-4z'/%3E%3C/svg%3E";
     const scientific = document.getElementById('cms-scientific').value.trim();
     const habitat = document.getElementById('cms-habitat').value.trim();
     const wingspan = document.getElementById('cms-wingspan').value.trim();
