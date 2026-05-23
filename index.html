@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aves &amp; Echoes — A Premium Birding Journal &amp; Field Guide</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Immerse yourself in the avian world. Explore deep-dive birding articles, an interactive field guide with bird calls, and log your personal sightings in a premium digital journal.">
+  <meta name="keywords" content="birding, birdwatching, field guide, bird calls, loon, warbler, falcon, sighting journal, birding blog">
+  <meta name="author" content="Aves &amp; Echoes">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Aves &amp; Echoes — A Premium Birding Journal">
+  <meta property="og:description" content="Explore deep-dive birding articles, bird calls, and log your personal sightings in a premium digital journal.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Favicon (SVG base64 encoded for reliability) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 50 C20 30, 40 20, 60 20 C70 20, 80 25, 85 35 C75 35, 65 40, 60 50 C55 60, 45 70, 30 70 C25 70, 20 65, 20 50 Z' fill='%23d4a373'/%3E%3Ccircle cx='65' cy='32' r='4' fill='%230f281e'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Premium Shrinking Header -->
+  <header id="main-header">
+    <div class="header-container">
+      <a href="#" id="brand-logo" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 100 100" aria-hidden="true">
+          <!-- Stylized geometric bird logo -->
+          <path d="M20 60 C 30 30, 60 30, 80 40 C 70 50, 60 55, 55 65 C 45 75, 30 75, 20 60 Z" fill="var(--accent)" />
+          <path d="M50 45 C 55 35, 70 25, 85 30 C 75 40, 65 45, 50 45 Z" fill="var(--accent-light)" />
+          <circle cx="68" cy="38" r="3" fill="var(--bg-main)" />
+        </svg>
+        <span class="logo-text">Aves &amp; Echoes</span>
+      </a>
+      
+      <nav id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><button class="nav-btn active" id="btn-blog" data-target="blog">Journal Entries</button></li>
+          <li><button class="nav-btn" id="btn-guide" data-target="guide">Field Guide</button></li>
+          <li><button class="nav-btn" id="btn-journal" data-target="journal">Sighting Log</button></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <button id="theme-toggle" aria-label="Toggle dark and light theme" class="control-btn">
+          <!-- Sun Icon (visible in dark mode) -->
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (visible in light mode) -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-subtitle">Whispers of the Wild canopy</span>
+      <h1 class="hero-title" id="main-heading">Immerse Yourself in Avian Wonder</h1>
+      <p class="hero-desc">Discover descriptive field chronicles, listen to natural wild acoustics, and capture your personal sightings in our interactive sanctuary.</p>
+      <div class="hero-actions">
+        <button class="hero-cta" id="hero-cta-explore">Explore Articles</button>
+        <button class="hero-cta outline" id="hero-cta-log">Log a Sighting</button>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-mouse">
+        <span class="scroll-wheel"></span>
+      </span>
+      <span class="scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- Core Content Container -->
+  <main class="content-wrapper">
+    
+    <!-- 1. BLOG / ARTICLES VIEW -->
+    <section id="blog-view" class="app-view">
+      <div class="section-header">
+        <div class="header-titles">
+          <span class="section-tag">Read &amp; Learn</span>
+          <h2 class="section-title">Chronicles from the Canopy</h2>
+        </div>
+        <!-- Category Filters -->
+        <div class="filter-wrapper" aria-label="Filter blog posts by bird category">
+          <button class="filter-btn active" data-filter="all">All Chronicles</button>
+          <button class="filter-btn" data-filter="waterfowl">Waterfowl</button>
+          <button class="filter-btn" data-filter="songbirds">Songbirds</button>
+          <button class="filter-btn" data-filter="raptors">Raptors</button>
+        </div>
+      </div>
+
+      <!-- Blog Grid -->
+      <div id="blog-grid" class="blog-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- 1b. BLOG ARTICLE DETAILS VIEW (SPA swap target for View Transitions) -->
+    <article id="article-detail-view" class="app-view hidden" tabindex="-1" aria-labelledby="detail-title">
+      <!-- Content populated dynamically by app.js -->
+    </article>
+
+    <!-- 2. FIELD GUIDE VIEW -->
+    <section id="guide-view" class="app-view hidden">
+      <div class="section-header">
+        <div class="header-titles">
+          <span class="section-tag">Interactive Field Directory</span>
+          <h2 class="section-title">Avian Reference &amp; Soundboard</h2>
+        </div>
+        <div class="search-bar-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="guide-search" placeholder="Search by name, category, habitat..." aria-label="Search field guide">
+        </div>
+      </div>
+
+      <div class="guide-intro-card glass-panel">
+        <div class="intro-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="36" height="36">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div class="intro-text">
+          <h3>The Audio-Visual Experience</h3>
+          <p>Click the sound icons to play the genuine wilderness vocalizations of each species. Observe active audio wave fluctuations, study biological taxonomy, and deepen your appreciation of woodland, wetland, and urban song cycles.</p>
+        </div>
+      </div>
+
+      <!-- Field Guide Grid -->
+      <div id="guide-grid" class="guide-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- 3. SIGHTING JOURNAL / LOG VIEW -->
+    <section id="journal-view" class="app-view hidden">
+      <div class="section-header">
+        <div class="header-titles">
+          <span class="section-tag">Your Field Observations</span>
+          <h2 class="section-title">Personal Sighting Log</h2>
+        </div>
+        <button class="add-sighting-btn shadow-hover" id="btn-open-sighting-modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Record a Sighting
+        </button>
+      </div>
+
+      <!-- Sightings Grid -->
+      <div id="sightings-grid" class="sightings-grid">
+        <!-- Rendered dynamically by app.js. Defaults to localstorage and has a gorgeous empty state. -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Persistent Audio Status Widget (Exquisite backdrop blurred overlay floating in the bottom-right when audio is playing) -->
+  <div id="audio-widget" class="audio-widget glass-panel hidden" aria-live="polite">
+    <div class="widget-bird-photo" id="widget-photo"></div>
+    <div class="widget-info">
+      <span class="widget-label">Now Listening</span>
+      <h4 class="widget-title" id="widget-name">Common Loon</h4>
+    </div>
+    <div class="widget-controls">
+      <button id="widget-play-toggle" aria-label="Pause audio" class="widget-btn">
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      </button>
+      <!-- Audio Wave Micro-Animation -->
+      <div class="audio-waves" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sighting Record Dialog (HTML5 Dialog - Modal backdrop blur) -->
+  <dialog id="sighting-dialog" class="glass-panel modal-dialog">
+    <div class="dialog-header">
+      <h3>Record Field Sighting</h3>
+      <button id="btn-close-sighting-modal" aria-label="Close dialog" class="dialog-close-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <form id="sighting-form" class="sighting-form" method="dialog">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sighting-species">Bird Species <span class="required">*</span></label>
+          <input type="text" id="sighting-species" required placeholder="e.g. Northern Cardinal, Osprey" autocomplete="off" maxLength="50">
+          <span class="error-msg" id="species-error">Species name is required.</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="sighting-date">Date of Observation <span class="required">*</span></label>
+          <input type="date" id="sighting-date" required>
+          <span class="error-msg" id="date-error">A valid observation date is required.</span>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sighting-location">Location / Habitat <span class="required">*</span></label>
+          <input type="text" id="sighting-location" required placeholder="e.g. Central Park (Oak Grove), Backyard feeder" autocomplete="off" maxLength="80">
+          <span class="error-msg" id="location-error">Location detail is required.</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="sighting-photo-select">Representative Photograph</label>
+          <select id="sighting-photo-select" aria-label="Select photo option">
+            <option value="sightings_placeholder">Vintage Journal Sketch (Default)</option>
+            <option value="common_loon">Mist-covered Common Loon</option>
+            <option value="warbler">Vibrant Pine-branch Warbler</option>
+            <option value="peregrine_falcon">Urban Skyscraper Falcon</option>
+            <option value="custom">Upload Local Image...</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic Custom File Upload Group -->
+      <div class="form-group hidden" id="custom-file-group">
+        <label for="sighting-file">Upload Image File</label>
+        <div class="file-drop-zone">
+          <input type="file" id="sighting-file" accept="image/*" aria-label="Upload bird sighting image">
+          <div class="drop-zone-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+            <span>Click or drag image file here</span>
+          </div>
+          <div class="file-preview-container hidden" id="file-preview-box">
+            <img src="" alt="Sighting preview" id="file-preview-img">
+            <button type="button" id="btn-remove-file" class="remove-file-btn" aria-label="Remove image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="sighting-notes">Field Observations &amp; Behavior Notes</label>
+        <textarea id="sighting-notes" rows="4" placeholder="Describe behavior, flock size, nesting indicators, weather conditions, or calls heard..." maxLength="500"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" id="btn-cancel-sighting">Cancel</button>
+        <button type="submit" class="btn-submit shadow-hover" id="btn-save-sighting">Save Observation</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Publishing Companion Dialog (Owner Portal - Git-as-a-CMS Visual Editor) -->
+  <dialog id="cms-dialog" class="glass-panel modal-dialog cms-dialog">
+    <div class="dialog-header">
+      <h3>Owner Publishing Companion</h3>
+      <button id="btn-close-cms-modal" aria-label="Close dialog" class="dialog-close-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="cms-modal-tabs">
+      <button type="button" class="cms-tab-btn active" id="cms-tab-editor">1. Draft Content</button>
+      <button type="button" class="cms-tab-btn" id="cms-tab-output" disabled>2. Get Assets</button>
+    </div>
+    
+    <form id="cms-form" class="sighting-form cms-form" method="dialog">
+      <!-- Section 1: Editor Form Panel -->
+      <div class="cms-form-panel" id="cms-panel-editor">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cms-title">Article Title <span class="required">*</span></label>
+            <input type="text" id="cms-title" required placeholder="e.g. Flight of the Golden Eagle" autocomplete="off" maxLength="80">
+          </div>
+          <div class="form-group">
+            <label for="cms-tag">Display Tag / Topic <span class="required">*</span></label>
+            <input type="text" id="cms-tag" required placeholder="e.g. Canopy Secrets, Sky Hunters" autocomplete="off" maxLength="30">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cms-category">Category <span class="required">*</span></label>
+            <select id="cms-category" required>
+              <option value="songbirds">Songbirds</option>
+              <option value="waterfowl">Waterfowl</option>
+              <option value="raptors">Raptors</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cms-reading-time">Estimated Reading Time <span class="required">*</span></label>
+            <input type="text" id="cms-reading-time" required placeholder="e.g. 5 min read" autocomplete="off" maxLength="15">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cms-author">Author Name <span class="required">*</span></label>
+            <input type="text" id="cms-author" required placeholder="e.g. Dr. Evelyn Drake" value="Dr. Evelyn Drake" autocomplete="off" maxLength="50">
+          </div>
+          <div class="form-group">
+            <label for="cms-author-avatar">Author Avatar URL</label>
+            <input type="url" id="cms-author-avatar" placeholder="https://images.unsplash.com/..." value="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="form-row text-quad-fields" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="form-group">
+            <label for="cms-scientific">Scientific Name <span class="required">*</span></label>
+            <input type="text" id="cms-scientific" required placeholder="e.g. Aquila chrysaetos" autocomplete="off" maxLength="40">
+          </div>
+          <div class="form-group">
+            <label for="cms-habitat">Core Habitat <span class="required">*</span></label>
+            <input type="text" id="cms-habitat" required placeholder="e.g. Mountain Peaks" autocomplete="off" maxLength="40">
+          </div>
+          <div class="form-group">
+            <label for="cms-wingspan">Wingspan <span class="required">*</span></label>
+            <input type="text" id="cms-wingspan" required placeholder="e.g. 180 - 220 cm" autocomplete="off" maxLength="25">
+          </div>
+          <div class="form-group">
+            <label for="cms-status">Status <span class="required">*</span></label>
+            <input type="text" id="cms-status" required placeholder="e.g. Stable" autocomplete="off" maxLength="25">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cms-excerpt">Brief Excerpt (for list card) <span class="required">*</span></label>
+          <input type="text" id="cms-excerpt" required placeholder="A short, catchy summary summarizing the migration or habitat behavior..." autocomplete="off" maxLength="180">
+        </div>
+
+        <div class="form-group">
+          <label for="cms-photo">Feature Photograph File <span class="required">*</span></label>
+          <div class="file-drop-zone" id="cms-photo-drop-zone">
+            <input type="file" id="cms-photo" accept="image/*" required aria-label="Upload feature bird photograph">
+            <div class="drop-zone-text" id="cms-drop-zone-text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>Click or drag high-quality bird photograph here</span>
+            </div>
+            <div class="file-preview-container hidden" id="cms-preview-box">
+              <img src="" alt="Feature preview" id="cms-preview-img">
+              <button type="button" id="btn-cms-remove-file" class="remove-file-btn" aria-label="Remove image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cms-content">Article Body Content (HTML tags supported) <span class="required">*</span></label>
+          <textarea id="cms-content" rows="6" required placeholder="<p>Write your detailed article body content here...</p>&#10;<p>You can also use custom callouts for quotes like:</p>&#10;<div class='detail-callout'>&#10;  &quot;Enter a powerful quote or observation here.&quot;&#10;</div>"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="btn-cancel-cms">Cancel</button>
+          <button type="submit" class="btn-submit shadow-hover" id="btn-generate-cms">Generate Assets</button>
+        </div>
+      </div>
+
+      <!-- Section 2: Output Panel -->
+      <div class="cms-form-panel hidden" id="cms-panel-output">
+        <div class="cms-success-banner glass-panel">
+          <div class="success-icon-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="hsl(140, 60%, 50%)" stroke-width="2.5" width="32" height="32">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="success-text">
+            <h4>Draft Generated Successfully!</h4>
+            <p>Your photo has been optimized and initiated for download, and your local Chronicles grid has been updated dynamically in memory for testing.</p>
+          </div>
+        </div>
+
+        <div class="cms-instructions-box glass-panel">
+          <h4>Publishing Instructions:</h4>
+          <ol class="cms-instructions-list">
+            <li>
+              <strong>Move the Downloaded Image:</strong>
+              <p>Locate the downloaded photo (renamed to <code id="cms-image-filename">bird-photo.png</code>) in your computer's Downloads folder and move it into the <code class="filepath">images/</code> directory of your blog project workspace.</p>
+            </li>
+            <li>
+              <strong>Update Database File:</strong>
+              <p>Click the "Copy Database JSON" button below. Open <code class="filepath">posts.json</code> in your project editor, select the entire file content, and paste the copied block to overwrite it completely.</p>
+            </li>
+            <li>
+              <strong>Deploy/Git Push:</strong>
+              <p>Once files are saved in your workspace, commit your changes in Git and push them to your hosting provider! Your new article is now permanently published.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="form-group code-output-group">
+          <div class="code-output-header">
+            <label for="cms-code-output">Updated posts.json content</label>
+            <button type="button" class="btn-copy-code" id="btn-copy-cms-code">
+              <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Code</span>
+            </button>
+          </div>
+          <textarea id="cms-code-output" readonly rows="8" style="font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; background: var(--bg-main); color: var(--accent); line-height: 1.4;"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="btn-back-editor" style="margin-right: auto;">Back to Form</button>
+          <button type="button" class="btn-submit shadow-hover" id="btn-finish-cms">Close Companion</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Elegant Page Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg class="logo-icon" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M20 60 C 30 30, 60 30, 80 40 C 70 50, 60 55, 55 65 C 45 75, 30 75, 20 60 Z" fill="var(--accent)" />
+          </svg>
+          <span>Aves &amp; Echoes</span>
+        </div>
+        <p>A digital laboratory and immersive sanctuary dedicated to the exploration, appreciation, and cataloging of bird life.</p>
+      </div>
+      
+      <div class="footer-links-group">
+        <h4>Navigation</h4>
+        <ul>
+          <li><button class="footer-link-btn" data-target="blog">Journal Entries</button></li>
+          <li><button class="footer-link-btn" data-target="guide">Field Guide</button></li>
+          <li><button class="footer-link-btn" data-target="journal">Sighting Log</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-meta">
+        <div class="footer-badges">
+          <span class="badge" title="Fully semantic HTML markup conformant to WCAG 2.1">HTML5 Semantic</span>
+          <span class="badge" title="No-dependency vanilla client scripts for raw speed">Zero Dependencies</span>
+          <span class="badge" title="Utilizes ultra-modern browser View Transitions">View Transitions</span>
+        </div>
+        <p class="copyright">
+          &copy; 2026 Aves &amp; Echoes. Designed with deep appreciation for avian biodiversity. All photographs generated using neural models.
+          &bull; 
+          <a href="#" id="admin-cms-link" class="footer-portal-link" style="color: var(--accent); opacity: 0.8; text-decoration: underline; font-weight: 500; margin-left: 5px;">Owner Portal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
