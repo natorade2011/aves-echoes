@@ -910,12 +910,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCancelCms = document.getElementById('btn-cancel-cms');
   const cmsForm = document.getElementById('cms-form');
 
-  // Production Guard: Automatically hide the Owner Portal link if the site is loaded on a live public domain
+  // Production Guard: Automatically show the Owner Portal link ONLY if running locally
   const isLocal = window.location.hostname === 'localhost' || 
                   window.location.hostname === '127.0.0.1' || 
                   window.location.hostname === '[::1]' || 
                   window.location.protocol === 'file:';
-  if (!isLocal) {
+  if (isLocal) {
+    if (adminCmsLink) {
+      adminCmsLink.style.display = 'inline-block';
+    }
+  } else {
     document.body.classList.add('production-mode');
     if (adminCmsLink) {
       adminCmsLink.style.display = 'none';
