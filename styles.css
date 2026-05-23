@@ -1804,3 +1804,10 @@ html[data-theme="light"] .success-text h4 {
 .cms-form-panel {
   animation: fadeIn 0.4s ease forwards;
 }
+
+/* Production Safeguard - Hide interactive owner tools on the live website */
+.production-mode #hero-cta-log,
+.production-mode #btn-open-sighting-modal,
+.production-mode .sighting-delete-btn {
+  display: none !important;
+}

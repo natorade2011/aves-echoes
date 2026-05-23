@@ -902,8 +902,11 @@ document.addEventListener('DOMContentLoaded', () => {
                   window.location.hostname === '127.0.0.1' || 
                   window.location.hostname === '[::1]' || 
                   window.location.protocol === 'file:';
-  if (!isLocal && adminCmsLink) {
-    adminCmsLink.style.display = 'none';
+  if (!isLocal) {
+    document.body.classList.add('production-mode');
+    if (adminCmsLink) {
+      adminCmsLink.style.display = 'none';
+    }
   }
   
   const cmsTabEditor = document.getElementById('cms-tab-editor');
