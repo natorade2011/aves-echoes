@@ -407,34 +407,61 @@
 
       <!-- Section 2: Output Panel -->
       <div class="cms-form-panel hidden" id="cms-panel-output">
-        <div class="cms-success-banner glass-panel">
-          <div class="success-icon-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="hsl(140, 60%, 50%)" stroke-width="2.5" width="32" height="32">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+        <!-- Automated Success Group (Activated by local Node server) -->
+        <div id="cms-auto-success-group" class="hidden">
+          <div class="cms-success-banner glass-panel">
+            <div class="success-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="hsl(140, 60%, 50%)" stroke-width="2.5" width="32" height="32">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="success-text">
+              <h4>Article Published Automatically!</h4>
+              <p>Your birding chronicle has been successfully saved to your codebase, committed in Git, and pushed live to your domain!</p>
+            </div>
           </div>
-          <div class="success-text">
-            <h4>Draft Generated Successfully!</h4>
-            <p>Your photo has been optimized and initiated for download, and your local Chronicles grid has been updated dynamically in memory for testing.</p>
+          <div class="cms-instructions-box glass-panel" style="border-color: rgba(40, 160, 80, 0.3);">
+            <h4 style="color: hsl(140, 60%, 45%); margin-bottom: 0.5rem;">🎉 Single-Click Deployment Success:</h4>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+              Because you are running our **Localhost Publishing Server**, we automatically handled all file writing, image optimization, Git commits, and code pushes for you in the background!
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.75rem;">
+              Your live website at **nateturephotos.com** is currently compiling and will update in under 30 seconds. No manual steps are required.
+            </p>
           </div>
         </div>
 
-        <div class="cms-instructions-box glass-panel">
-          <h4>Publishing Instructions:</h4>
-          <ol class="cms-instructions-list">
-            <li>
-              <strong>Move the Downloaded Image:</strong>
-              <p>Locate the downloaded photo (renamed to <code id="cms-image-filename">bird-photo.png</code>) in your computer's Downloads folder and move it into the <code class="filepath">images/</code> directory of your blog project workspace.</p>
-            </li>
-            <li>
-              <strong>Update Database File:</strong>
-              <p>Click the "Copy Database JSON" button below. Open <code class="filepath">posts.json</code> in your project editor, select the entire file content, and paste the copied block to overwrite it completely.</p>
-            </li>
-            <li>
-              <strong>Deploy/Git Push:</strong>
-              <p>Once files are saved in your workspace, commit your changes in Git and push them to your hosting provider! Your new article is now permanently published.</p>
-            </li>
-          </ol>
+        <!-- Manual Fallback Success Group (Activated under standard static server) -->
+        <div id="cms-manual-success-group">
+          <div class="cms-success-banner glass-panel">
+            <div class="success-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="hsl(140, 60%, 50%)" stroke-width="2.5" width="32" height="32">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="success-text">
+              <h4>Draft Generated Successfully!</h4>
+              <p>Your photo has been optimized and initiated for download, and your local Chronicles grid has been updated dynamically in memory for testing.</p>
+            </div>
+          </div>
+
+          <div class="cms-instructions-box glass-panel">
+            <h4>Publishing Instructions:</h4>
+            <ol class="cms-instructions-list">
+              <li>
+                <strong>Move the Downloaded Image:</strong>
+                <p>Locate the downloaded photo (renamed to <code id="cms-image-filename">bird-photo.png</code>) in your computer's Downloads folder and move it into the <code class="filepath">images/</code> directory of your blog project workspace.</p>
+              </li>
+              <li>
+                <strong>Update Database File:</strong>
+                <p>Click the "Copy Database JSON" button below. Open <code class="filepath">posts.json</code> in your project editor, select the entire file content, and paste the copied block to overwrite it completely.</p>
+              </li>
+              <li>
+                <strong>Deploy/Git Push:</strong>
+                <p>Once files are saved in your workspace, commit your changes in Git and push them to your hosting provider! Your new article is now permanently published.</p>
+              </li>
+            </ol>
+          </div>
         </div>
 
         <div class="form-group code-output-group">

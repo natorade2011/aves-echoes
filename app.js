@@ -1097,24 +1097,93 @@ document.addEventListener('DOMContentLoaded', () => {
       content: content
     };
 
-    // Prepend to active memory cache and redraw the blog grid instantly for live preview testing
-    BLOG_POSTS.unshift(newPost);
-    renderBlogGrid();
+    // Select success groups
+    const cmsAutoSuccessGroup = document.getElementById('cms-auto-success-group');
+    const cmsManualSuccessGroup = document.getElementById('cms-manual-success-group');
 
-    // Format stringified, beautifully spaced JSON database
-    const updatedDatabaseString = JSON.stringify(BLOG_POSTS, null, 2);
-    cmsCodeOutput.value = updatedDatabaseString;
-    cmsImageFilename.textContent = imageFilename;
+    // Attempt automated publishing through our local Node server
+    const submitBtn = document.getElementById('btn-generate-cms');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="16" height="16" style="animation: spin 1s linear infinite; margin-right: 8px;">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity="0.25"></circle>
+        <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor"></path>
+      </svg>
+      <span>Publishing...</span>
+    `;
 
-    // Trigger instant browser download of optimized bird photo asset
-    downloadImage(cmsUploadedImageData, imageFilename);
+    fetch('/api/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: imageSlug,
+        category: category,
+        tag: tag,
+        title: title,
+        excerpt: excerpt,
+        author: author,
+        authorAvatar: authorAvatar,
+        readingTime: readingTime,
+        imageName: imageFilename,
+        imageData: cmsUploadedImageData,
+        speciesFacts: {
+          scientific: scientific,
+          habitat: habitat,
+          wingspan: wingspan,
+          status: status
+        },
+        content: content
+      })
+    })
+    .then(res => {
+      if (res.ok) return res.json();
+      throw new Error('API server offline');
+    })
+    .then(resObj => {
+      if (resObj.success) {
+        // AUTOMATED SUCCESS: Saved, committed, and pushed completely in background!
+        cmsAutoSuccessGroup.classList.remove('hidden');
+        cmsManualSuccessGroup.classList.add('hidden');
+        
+        // Dynamically add post to cache and redraw Chronicles grid instantly
+        BLOG_POSTS.unshift(newPost);
+        renderBlogGrid();
+      } else {
+        throw new Error(resObj.error || 'Server error');
+      }
+    })
+    .catch(err => {
+      console.warn("Falling back to manual copy-paste workflow:", err);
+      // MANUAL FALLBACK: Static server in use. Provide files and show copy-paste steps.
+      cmsAutoSuccessGroup.classList.add('hidden');
+      cmsManualSuccessGroup.classList.remove('hidden');
+      
+      // Dynamically add post to cache and redraw Chronicles grid instantly
+      BLOG_POSTS.unshift(newPost);
+      renderBlogGrid();
 
-    // Swap panel to output dashboard
-    cmsTabEditor.classList.remove('active');
-    cmsTabOutput.classList.add('active');
-    cmsTabOutput.disabled = false;
-    cmsPanelEditor.classList.add('hidden');
-    cmsPanelOutput.classList.remove('hidden');
+      // Format stringified, beautifully spaced JSON database
+      const updatedDatabaseString = JSON.stringify(BLOG_POSTS, null, 2);
+      cmsCodeOutput.value = updatedDatabaseString;
+      cmsImageFilename.textContent = imageFilename;
+
+      // Trigger browser photo download
+      downloadImage(cmsUploadedImageData, imageFilename);
+    })
+    .finally(() => {
+      // Restore button status
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+
+      // Swap panel to output dashboard
+      cmsTabEditor.classList.remove('remove');
+      cmsTabEditor.classList.remove('active');
+      cmsTabOutput.classList.add('active');
+      cmsTabOutput.disabled = false;
+      cmsPanelEditor.classList.add('hidden');
+      cmsPanelOutput.classList.remove('hidden');
+    });
   });
 
   // "Back to Form" button logic
